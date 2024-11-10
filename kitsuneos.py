@@ -58,7 +58,7 @@ def receive_emails(email_user, email_password):
 
 # Run the system
 while True:
-  print("Commands: time, calc, email")
+  print("Commands: time, calc, email, web")
   command = str(input("KITSUNE-CMD: "))
   if command == "time":
     now = time.time()
@@ -100,3 +100,15 @@ while True:
             web.open("https://accounts.google.com/ServiceLogin?service=gmail")
         else:
             print("Invalid option. Please select 1, 2, or 3.")
+    elif command == "web":
+        site = int(input("Please pick from URL (1) or Google Search (2)."))
+        if site == 1:
+            siteurl = input("Please type the URL you would like to open, after https://")
+            web.open(str(f"https://{siteurl}"))
+        elif site == 2:
+            siteurl = input("Please type the term you would like to search: ")
+            web.open(str(f"https://www.google.com/search?q={siteurl}"))
+        else:
+            print("Invalid request.")
+        
+            
