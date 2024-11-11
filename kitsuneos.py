@@ -57,8 +57,9 @@ def receive_emails(email_user, email_password):
 
 
 # Run the system
+cmds = "time, calc, email, web, dice, timer, cmds"
+print("Commands: " + cmds)
 while True:
-  print("Commands: time, calc, email, web, dice, timer")
   command = str(input("KITSUNE-CMD: "))
   if command == "time":
     now = time.time()
@@ -66,10 +67,18 @@ while True:
     print("The current time is: " + currenttime)
   elif command == "calc":
     operation = input("Enter a math operation (add, subtract, multiply, divide, +, -, *, /): ").strip().lower()
+    if operation == 'add' or operation == '+':
+        opSys = "+"
+    elif operation == 'subtract' or operation == '-':
+        opSys = "-"
+    elif operation == 'multiply' or operation == '*':
+        opSys = "*"
+    elif operation == 'divide' or operation == '/':
+        opSys = "/"
     num1 = float(input("Enter the first number: "))
     num2 = float(input("Enter the second number: "))
     result = calculate(operation, num1, num2)
-    print(f"{num1} {opSys} {num2} = {result}")
+    print(f"{num1} " + opSys + f" {num2} = {result}")
   elif command == "email":
         print("Choose an option:")
         print("1: Send Email")
@@ -113,7 +122,7 @@ while True:
     elif command == "dice":
         dicesize = int(input("What size of dice do you want? d"))
         diceoutput = random.randint(1, dicesize)
-        print("Your d" + dicesize + " rolled a " + diceoutput + ".")
+        print("Your d" + str(dicesize) + " rolled a " + str(diceoutput) + ".")
     elif command == "timer":
         timer = int(input("How long do you want to set the timer for? (In seconds) "))
         timerint = 0
@@ -123,4 +132,5 @@ while True:
             time.sleep(1)
             timerint = timerint + 1
         print("Your " + str(timer) + " second timer is up.")
-            
+    elif command == "cmds":
+        print("Commands: " + cmds)
