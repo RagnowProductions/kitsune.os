@@ -58,7 +58,7 @@ def receive_emails(email_user, email_password):
 
 # Run the system
 while True:
-  print("Commands: time, calc, email, web")
+  print("Commands: time, calc, email, web, dice, timer")
   command = str(input("KITSUNE-CMD: "))
   if command == "time":
     now = time.time()
@@ -110,5 +110,17 @@ while True:
             web.open(str(f"https://www.google.com/search?q={siteurl}"))
         else:
             print("Invalid request.")
-        
+    elif command == "dice":
+        dicesize = int(input("What size of dice do you want? d"))
+        diceoutput = random.randint(1, dicesize)
+        print("Your d" + dicesize + " rolled a " + diceoutput + ".")
+    elif command == "timer":
+        timer = int(input("How long do you want to set the timer for? (In seconds) "))
+        timerint = 0
+        while timerint != timer:
+            timeleft = timer - timerint
+            print("Time Remaining: " + str(timeleft))
+            time.sleep(1)
+            timerint = timerint + 1
+        print("Your " + str(timer) + " second timer is up.")
             
